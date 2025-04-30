@@ -1,4 +1,9 @@
 {
+  "headers": {
+    "/index.html": {
+      "Cache-Control": "max-age=3500"
+    }
+  },
   "routes": {
     "/*": "/index.html",
     "/Home": "/index.html",
