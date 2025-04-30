@@ -1,100 +1,258 @@
 <!DOCTYPE html>
 <html lang="th">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>แสดงข้อมูล - Static Website</title>
-    <link rel="stylesheet" href="css/styles.css" />
-  </head>
-  <body>
-    <nav>
-      <ul>
-        <li><a href="index.html">หน้าแรก</a></li>
-        <li><a href="about.html">เกี่ยวกับเรา</a></li>
-        <li><a href="contact.html">ติดต่อเรา</a></li>
-        <li><a href="show.html">แสดงข้อมูล</a></li>
-      </ul>
-    </nav>
-    <main>
-      <h1>แกลเลอรี่รูปภาพและวิดีโอ</h1>
-
-      <!-- รูปภาพจากอินเทอร์เน็ต -->
-      <section class="gallery">
-        <h2>รูปภาพ</h2>
-        <div class="image-container">
-          <img src="https://picsum.photos/400/300" alt="รูปภาพสุ่ม 1" />
-          <img src="https://picsum.photos/401/300" alt="รูปภาพสุ่ม 2" />
-          <img src="https://picsum.photos/402/300" alt="รูปภาพสุ่ม 3" />
-        </div>
-      </section>
-
-      <!-- วิดีโอจาก YouTube -->
-      <section class="video-gallery">
-        <h2>วิดีโอ</h2>
-        <div class="video-container">
-          <iframe
-            width="560"
-            height="315"
-            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-          >
-          </iframe>
-          <iframe
-            width="560"
-            height="315"
-            src="https://www.youtube.com/watch?v=EW_wkqS7k2c"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-          >
-          </iframe>
-          <iframe
-            width="560"
-            height="315"
-            src="https://www.youtube.com/watch?v=8BRhU4PDX0o"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-          >
-          </iframe>
-          
-        </div>
-      </section>
-    </main>
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แหล่งความรู้ออนไลน์</title>
     <style>
-      .gallery,
-      .video-gallery {
-        margin: 20px 0;
-        padding: 20px;
-      }
+        /* CSS ทั้งหมดอยู่ในไฟล์เดียว */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-      .image-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-        justify-content: center;
-      }
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
 
-      .image-container img {
-        max-width: 400px;
-        height: auto;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      }
+        header {
+            background-color: #2a6496;
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
 
-      .video-container {
-        display: flex;
-        justify-content: center;
-        margin-top: 20px;
-      }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
 
-      iframe {
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        border-radius: 8px;
-      }
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+        }
+
+        h2 {
+            color: #2a6496;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #eaeaea;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-caption {
+            padding: 1rem;
+            background-color: white;
+        }
+
+        .gallery-caption h3 {
+            margin-bottom: 0.5rem;
+            color: #2a6496;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            margin: 2rem 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .article {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        .article:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .article h3 {
+            color: #2a6496;
+            margin-bottom: 0.5rem;
+        }
+
+        .article-meta {
+            color: #777;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 2rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
-  </body>
+</head>
+<body>
+    <header>
+        <h1>แหล่งความรู้ออนไลน์</h1>
+        <p class="subtitle">รวบรวมเนื้อหาที่น่าสนใจจากหลากหลายแหล่งบนอินเทอร์เน็ต</p>
+    </header>
+
+    <div class="container">
+        <section class="section">
+            <h2>รูปภาพที่น่าสนใจ</h2>
+            <p>ภาพถ่ายที่น่าสนใจจากแหล่งต่างๆ ทั่วโลก</p>
+            
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1726137570000-70ae29f0ba01?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="ธรรมชาติ">
+                    <div class="gallery-caption">
+                        <h3>ธรรมชาติอันงดงาม</h3>
+                        <p>ภาพถ่ายธรรมชาติที่น่าทึ่งจากทั่วโลก</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1745770998338-eb50b0c89b16?q=80&w=2942&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="เทคโนโลยี">
+                    <div class="gallery-caption">
+                        <h3>เทคโนโลยีล้ำสมัย</h3>
+                        <p>นวัตกรรมและเทคโนโลยีที่กำลังเปลี่ยนแปลงโลก</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1745750747228-d7ae37cba3a5?q=80&w=2944&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="สถาปัตยกรรม">
+                    <div class="gallery-caption">
+                        <h3>สถาปัตยกรรมอันน่าทึ่ง</h3>
+                        <p>อาคารและสิ่งก่อสร้างที่มีการออกแบบอันโดดเด่น</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://plus.unsplash.com/premium_photo-1673795753320-a9df2df4461e?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="อาหาร">
+                    <div class="gallery-caption">
+                        <h3>อาหารน่ารับประทาน</h3>
+                        <p>อาหารหลากหลายชนิดจากทั่วทุกมุมโลก</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>วิดีโอแนะนำ</h2>
+            <p>วิดีโอที่น่าสนใจและให้ความรู้</p>
+            
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY" ></iframe>
+            </div>
+            
+            <p>วิดีโอนี้แสดงให้เห็นถึงความน่าสนใจของเนื้อหาออนไลน์ที่สามารถเข้าถึงได้ง่ายในปัจจุบัน</p>
+        </section>
+
+        <section class="section">
+            <h2>บทความล่าสุด</h2>
+            
+            <div class="article">
+                <h3>เทรนด์เทคโนโลยีที่น่าจับตามองในปี 2025</h3>
+                <div class="article-meta">30 เม.ย. 2025 • โดย ดร. สมชาย เทคโนโลยี</div>
+                <p>ในปี 2025 เทคโนโลยีจะมีการพัฒนาอย่างก้าวกระโดด โดยเฉพาะในด้านปัญญาประดิษฐ์ (AI) และการเรียนรู้ของเครื่อง (Machine Learning) ที่จะมีบทบาทสำคัญในทุกอุตสาหกรรม ตั้งแต่การแพทย์ไปจนถึงการเกษตร</p>
+                <p>นอกจากนี้ เทคโนโลยี 5G และ 6G จะทำให้การเชื่อมต่อเร็วขึ้น เปิดโอกาสให้เกิดนวัตกรรมใหม่ๆ โดยเฉพาะในด้านของ IoT (Internet of Things) และการสื่อสารแบบเรียลไทม์</p>
+            </div>
+            
+            <div class="article">
+                <h3>การค้นพบดาวเคราะห์นอกระบบสุริยะที่มีความเป็นไปได้ในการรองรับชีวิต</h3>
+                <div class="article-meta">29 เม.ย. 2025 • โดย ดร. ดาว นักดาราศาสตร์</div>
+                <p>นักดาราศาสตร์ได้ค้นพบดาวเคราะห์นอกระบบสุริยะที่มีชื่อว่า "Kepler-452b" ซึ่งมีขนาดใกล้เคียงกับโลกและอยู่ในระยะห่างจากดาวฤกษ์ของมันที่เหมาะสมสำหรับการมีน้ำในสถานะของเหลว</p>
+                <p>Kepler-452b มีสภาพแวดล้อมที่คล้ายคลึงกับโลก โดยมีอุณหภูมิที่เหมาะสมและอาจมีชั้นบรรยากาศที่สามารถปกป้องพื้นผิวจากรังสีอันตรายได้</p>
+            </div>
+            
+            <div class="article">
+                <h3>แนวโน้มเศรษฐกิจไทยในปี 2025</h3>
+                <div class="article-meta">28 เม.ย. 2025 • โดย ดร. เศรษฐา นักเศรษฐศาสตร์</div>
+                <p>คาดการณ์ว่าเศรษฐกิจไทยจะเติบโตประมาณ 3.5-4.0% ในปี 2025 โดยได้รับแรงหนุนจากการฟื้นตัวของภาคการท่องเที่ยวและการส่งออก</p>
+                <p>ปัจจัยสนับสนุนการเติบโตได้แก่ การฟื้นตัวของภาคการท่องเที่ยว การลงทุนในโครงสร้างพื้นฐานของภาครัฐ การขยายตัวของอุตสาหกรรมดิจิทัล และการเติบโตของการส่งออกสินค้าเทคโนโลยี</p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 แหล่งความรู้ออนไลน์. สงวนลิขสิทธิ์.</p>
+    </footer>
+</body>
 </html>
