@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>แสดงข้อมูล - Static Website</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="index.html">หน้าแรก</a></li>
+        <li><a href="about.html">เกี่ยวกับเรา</a></li>
+        <li><a href="contact.html">ติดต่อเรา</a></li>
+        <li><a href="show.html">แสดงข้อมูล</a></li>
+      </ul>
+    </nav>
+    <main>
+      <h1>แกลเลอรี่รูปภาพและวิดีโอ</h1>
+
+      <!-- รูปภาพจากอินเทอร์เน็ต -->
+      <section class="gallery">
+        <h2>รูปภาพ</h2>
+        <div class="image-container">
+          <img src="https://picsum.photos/400/300" alt="รูปภาพสุ่ม 1" />
+          <img src="https://picsum.photos/401/300" alt="รูปภาพสุ่ม 2" />
+          <img src="https://picsum.photos/402/300" alt="รูปภาพสุ่ม 3" />
+        </div>
+      </section>
+
+      <!-- วิดีโอจาก YouTube -->
+      <section class="video-gallery">
+        <h2>วิดีโอ</h2>
+        <div class="video-container">
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          >
+          </iframe>
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/watch?v=EW_wkqS7k2c"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          >
+          </iframe>
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/watch?v=8BRhU4PDX0o"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          >
+          </iframe>
+          
+        </div>
+      </section>
+    </main>
+
+    <style>
+      .gallery,
+      .video-gallery {
+        margin: 20px 0;
+        padding: 20px;
+      }
+
+      .image-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+      }
+
+      .image-container img {
+        max-width: 400px;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .video-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+      }
+
+      iframe {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+      }
+    </style>
+  </body>
+</html>
